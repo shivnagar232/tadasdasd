@@ -38,17 +38,17 @@ db = redis.Redis(
 @bot.on(events.NewMessage(pattern="/start$", incoming=True, outgoing=False))
 async def start(m: UpdateNewMessage):
     reply_text = f"""
- 𝐇𝐞𝐥𝐥𝐨! 𝐈 𝐚𝐦 𝐓𝐞𝐫𝐚𝐛𝐨𝐱 𝐕𝐢𝐝𝐞𝐨 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫 𝐁𝐨𝐭.
-𝐒𝐞𝐧𝐝 𝐦𝐞 𝐭𝐞𝐫𝐚𝐛𝐨𝐱 𝐯𝐢𝐝𝐞𝐨 𝐥𝐢𝐧𝐤 & 𝐈 𝐰𝐢𝐥𝐥 𝐬𝐞𝐧𝐝 𝐕𝐢𝐝𝐞𝐨.
+Welcome to Tera Box DL
+Send me the terabox link to download.
 
-𝐏𝐋𝐀𝐍'𝐒 : /plans"""
+Late i am coming with plan now i am in testing version : /plans"""
 
     # Check if the user is a member of both channels
-    channel1 = "@devggn"
-    channel2 = "@devggn"  # Replace with the actual username of your second channel
+    channel1 = "@save_restricted_content_bot"
+    channel2 = "@save_restricted_content_bot"  # Replace with the actual username of your second channel
 
     if not await is_user_on_chat(bot, channel1, m.peer_id) or not await is_user_on_chat(bot, channel2, m.peer_id):
-        return await m.reply("𝐏𝐥𝐞𝐚𝐬𝐞 𝐣𝐨𝐢𝐧 @devggn 𝐚𝐧𝐝 @devggn 𝐛𝐞𝐟𝐨𝐫𝐞 𝐮𝐬𝐢𝐧𝐠 𝐭𝐡𝐞 𝐛𝐨𝐭.")
+        return await m.reply("Please join @save_restricted_content_bots . Before using the bot..")
 
     await m.reply(reply_text, link_preview=False, parse_mode="markdown")
 
@@ -58,15 +58,15 @@ async def start(m: UpdateNewMessage):
     fileid = db.get(str(text))
 
     # Define the channels
-    channel1 = "@devggn"
-    channel2 = "@devggn"
+    channel1 = "@save_restricted_content_bot"
+    channel2 = "@save_restricted_content_bot"
 
     # Check if the user is a member of both channels
     check_channel1 = await is_user_on_chat(bot, channel1, m.peer_id)
     check_channel2 = await is_user_on_chat(bot, channel2, m.peer_id)
 
     if not check_channel1 or not check_channel2:
-        return await m.reply("𝐏𝐥𝐞𝐚𝐬𝐞 𝐣𝐨𝐢𝐧 @devggn 𝐚𝐧𝐝 @devggn 𝐛𝐞𝐟𝐨𝐫𝐞 𝐮𝐬𝐢𝐧𝐠 𝐭𝐡𝐞 𝐛𝐨𝐭.")
+        return await m.reply("Please join @save_restricted_content_bots . Before using the bot..")
 
     await bot(
         ForwardMessagesRequest(
@@ -138,8 +138,8 @@ async def get_message(m: Message):
 
 async def handle_message(m: Message):
     # Define the channels
-    channel1 = "@devggn"
-    channel2 = "@devggn" # Replace with your second channel
+    channel1 = "@save_restricted_content_bot"
+    channel2 = "@save_restricted_content_bot" # Replace with your second channel
 
     # Check if the user is a member of both channels
     check_channel1 = await is_user_on_chat(bot, channel1, m.peer_id)
@@ -221,7 +221,7 @@ async def handle_message(m: Message):
 
         if not cansend.can_send():
             return
-        bar_length = 20
+        bar_length = 10
         percent = current_downloaded / total_downloaded
         arrow = "🟢" * int(percent * bar_length)
         spaces = "🔴" * (bar_length - len(arrow))
